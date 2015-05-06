@@ -3,7 +3,13 @@ import rethinkdb as r
 
 
 def get_db_connection():
-	r.connect(config.RETHINK_DB_SERVER, config.PORT_FOR_CLIENT_DRIVERS).repl()
+	try:
+		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
+	except as ex:
+		print 'Connection Establishment faield ', ex
+
+def close_connection():
+	pass
 
 def create_db(db_name):
 	pass
