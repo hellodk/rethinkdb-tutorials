@@ -5,7 +5,7 @@ import rethinkdb as r
 def get_db_connection():
 	try:
 		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
-	except as ex:
+	except ex:
 		print 'Connection Establishment faield ', ex
 
 def close_connection():
