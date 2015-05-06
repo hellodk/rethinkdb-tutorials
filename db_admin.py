@@ -16,9 +16,15 @@ def create_db(db_name):
 	pass
 
 def create_table(db_name,table_name):
-	r.db(db_name).table_create(table_name).run()
+	try:
+		r.db(db_name).table_create(table_name).run()
 	print 'Table created'
-	r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()
+	except e:
+		print 'Caught in exception ' , e
+	try:
+		r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()\
+	except ex:
+		print 'Exception in writing to table ', ex
 
 def delete_table(table_name):
 	pass
