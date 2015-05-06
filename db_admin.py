@@ -15,9 +15,9 @@ def close_connection():
 def create_db(db_name):
 	pass
 
-def create_table(table_name):
-	r.db('dk').table_create('ta').run()
-	r.table('ta').insert({ 'name': 'Star Trek TNG' }).run()
+def create_table(db_name,table_name):
+	r.db(db_name).table_create(table_name).run()
+	r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()
 
 def delete_table(table_name):
 	pass
@@ -28,5 +28,6 @@ def delete_db(db_name):
 if __name__ == '__main__':
 	print 'hello'
 	get_db_connection()
+	create_table('dk','test')
 
 
