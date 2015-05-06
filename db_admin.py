@@ -18,4 +18,7 @@ def delete_table(table_name):
 def delete_db(db_name):
 	pass
 
+if __name__ == main:
+	print 'hello'
+
 
