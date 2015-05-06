@@ -22,7 +22,7 @@ def create_table(db_name,table_name):
 	except e:
 		print 'Caught in exception ' , e
 	try:
-		r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()\
+		r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()
 	except ex:
 		print 'Exception in writing to table ', ex
 
