@@ -18,7 +18,7 @@ def create_db(db_name):
 def create_table(db_name,table_name):
 	try:
 		r.db(db_name).table_create(table_name).run()
-	print 'Table created'
+		print 'Table created'
 	except e:
 		print 'Caught in exception ' , e
 	try:
