@@ -16,8 +16,8 @@ def create_db(db_name):
 	pass
 
 def create_table(table_name):
-	r.db('dk').table_create('ta).run()
-	r.table('ta).insert({ 'name': 'Star Trek TNG' }).run()
+	r.db('dk').table_create('ta').run()
+	r.table('ta').insert({ 'name': 'Star Trek TNG' }).run()
 
 def delete_table(table_name):
 	pass
