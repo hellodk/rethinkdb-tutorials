@@ -17,6 +17,7 @@ def create_db(db_name):
 
 def create_table(db_name,table_name):
 	r.db(db_name).table_create(table_name).run()
+	print 'Table created'
 	r.table(table_name).insert({ 'name': 'Star Trek TNG' }).run()
 
 def delete_table(table_name):
@@ -28,6 +29,6 @@ def delete_db(db_name):
 if __name__ == '__main__':
 	print 'hello'
 	get_db_connection()
-	create_table('dk','test')
+	create_table('dk','phn')
 
 
