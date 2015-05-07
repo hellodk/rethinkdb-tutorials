@@ -1,7 +1,6 @@
 import config
 import rethinkdb as r
 
-
 def get_db_connection():
 	try:
 		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
@@ -19,8 +18,8 @@ def create_table(db_name,table_name):
 	try:
 		r.db(db_name).table_create(table_name).run()
 		print 'Table created'
-	except e:
-		print 'Caught in exception ' , e
+	except:
+		print 'Caught in exception'
 	try:
 		r.table(table_name).insert({'age': 26, 'name': 'Michel'}).run()
 	except ex:
