@@ -20,10 +20,11 @@ def create_table(db_name,table_name):
 		print 'Table created'
 	except:
 		print 'Caught in exception'
-	try:
-		r.table(table_name).insert({'age': 26, 'name': 'Michel'}).run()
-	except ex:
-		print 'Exception in writing to table ', ex
+        r.table(table_name).insert(r.expr({'age': 26, 'name': 'Michel'}))
+		
+		#r.table(table_name).insert({'age': 26, 'name': 'Michel'}).run()
+
+	print 'Exception in writing to table'
 
 def delete_table(table_name):
 	pass
