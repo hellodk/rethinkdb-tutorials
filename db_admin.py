@@ -37,4 +37,10 @@ if __name__ == '__main__':
 	get_db_connection()
 	create_table('dk','phn')
 
+'''
+r.table('dk.phn').insert({"age": 22,"name": "Miachel"}).run()
 
+r.table("posts").insert({"name": "Michel","age": 26}).run()
+
+
+'''
