@@ -1,2 +1,3 @@
 RETHINK_DB_INSTANCE_HOST = 'localhost'
 DRIVER_PORT = 28015
+DATABASE = 'ndnc'

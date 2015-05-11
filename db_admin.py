@@ -44,7 +44,10 @@ def delete_db(db_name):
 if __name__ == '__main__':
 	print 'hello'
 
-	#get_db_connection()
+	get_db_connection()
+	print 'db connection established'
+	create_db(config.DATABASE)
+	print config.DATABASE, ' db created'
 	#create_table('dk','phn')
 
 '''
