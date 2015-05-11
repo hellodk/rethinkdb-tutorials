@@ -5,8 +5,17 @@ def get_db_connection():
 	try:
 		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
 		print 'db connection created'
-	except ex:
-		print 'Connection Establishment faield ', ex
+	except Exception as ex:
+		print 'Connection Establishment faield ', ex.message()
+
+	'''
+	r.connect({ host: 'localhost',
+            port: 28015,
+            db: 'marvel',
+            authKey: 'hunter2' },
+          function(err, conn) { ... })
+
+	'''
 
 def close_connection():
 	pass
@@ -34,13 +43,10 @@ def delete_db(db_name):
 
 if __name__ == '__main__':
 	print 'hello'
-	get_db_connection()
-	create_table('dk','phn')
+	#get_db_connection()
+	#create_table('dk','phn')
 
 '''
 r.table('dk.phn').insert({"age": 22,"name": "Miachel"}).run()
-
 r.table("posts").insert({"name": "Michel","age": 26}).run()
-
-
 '''
