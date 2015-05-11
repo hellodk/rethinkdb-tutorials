@@ -1,6 +1,8 @@
 import config
 import rethinkdb as r
 
+from rethinkdb.errors import RqlRuntimeError
+
 def get_db_connection():
 	try:
 		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
