@@ -31,7 +31,7 @@ def create_db(db_name):
 		print 'Exception occurred ' , ex
 
 def list_db():
-	r.list_db()
+	r.db_list()
 
 def create_table(db_name,table_name):
 	try:
