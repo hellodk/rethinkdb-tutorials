@@ -44,7 +44,7 @@ def list_db():
     #get_db_connection()
     print r.db_list().run(connection)
 
-def change_db('db_name'):
+def change_db(db_name):
     try:
         connection.use(db_name)
     except Exception as ex:
@@ -54,8 +54,8 @@ def create_table(db_name,table_name):
     try:
         r.db(db_name).table_create(table_name).run()
         print 'Table created'
-    except:
-        print 'Caught in exception'
+    except Exception as ex:
+        print 'Caught in exception',ex
         r.table(table_name).insert(r.expr({'age': 26, 'name': 'Michel'}))
         
         #r.table(table_name).insert({'age': 26, 'name': 'Michel'}).run()
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     reconnect()
     create_db('rohit')
     change_db('rohit')
-    create_table('rohit','dk')
+    create_table('rohit','dk1')
 
 '''
 r.table('dk.phn').insert({"age": 22,"name": "Miachel"}).run()
