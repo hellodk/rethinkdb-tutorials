@@ -26,7 +26,9 @@ def create_db(db_name):
 	try:
 		r.db_create(db_name).run()
 	except RqlRuntimeError as rql:
-		print 'Failed to create the database ', rql.message()
+		print 'Failed to create the database ', rql
+	except Exception as ex:
+		print 'Exception occurred' , ex
 
 def create_table(db_name,table_name):
 	try:
