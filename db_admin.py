@@ -18,6 +18,13 @@ def get_db_connection():
     #       function(err, conn) { ... })'''
     return connection
 
+def reconnect():
+    try:
+        connection.reconnect(noreply_wait=False)
+    except Exception as ex:
+        print 'exceptin occurred ',ex
+    print 'Reconnected'
+
 def close_connection():
     try:
         connection.close()
@@ -36,6 +43,12 @@ def create_db(db_name):
 def list_db():
     #get_db_connection()
     print r.db_list().run(connection)
+
+def change_db('db_name'):
+    try:
+        connection.use(db_name)
+    except Exception as ex:
+        print 'Exception caused',ex
 
 def create_table(db_name,table_name):
     try:
@@ -65,6 +78,10 @@ if __name__ == '__main__':
     print 'Listing existing database \n', list_db()
     #create_table('dk','phn')
     close_connection()
+    reconnect()
+    create_db('rohit')
+    change_db('rohit')
+    create_table('rohit','dk')
 
 '''
 r.table('dk.phn').insert({"age": 22,"name": "Miachel"}).run()
