@@ -5,19 +5,18 @@ from rethinkdb.errors import RqlRuntimeError
 
 def get_db_connection():
 	try:
-		r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
-		print 'db connection created'
+		#conn = r.connect(host='localhost', port=28015)
+		global connection
+		connection = r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT).repl()
+		print 'db connection created ',connection
 	except Exception as ex:
 		print 'Connection Establishment faield ', ex.message()
-
-	'''
-	r.connect({ host: 'localhost',
+	'''	r.connect({ host: 'localhost',
             port: 28015,
             db: 'marvel',
             authKey: 'hunter2' },
-          function(err, conn) { ... })
-
-	'''
+          function(err, conn) { ... })'''
+	return connection
 
 def close_connection():
 	pass
@@ -31,7 +30,9 @@ def create_db(db_name):
 		print 'Exception occurred ' , ex
 
 def list_db():
-	r.db_list()
+	#get_db_connection()
+	print 'value ', connection
+	r.db_list().run(connection)
 
 def create_table(db_name,table_name):
 	try:
@@ -57,8 +58,8 @@ if __name__ == '__main__':
 	get_db_connection()
 	print 'db connection established'
 	create_db(config.DATABASE)
-	print config.DATABASE, ' db created'
-	print 'Listing existing database , list_db()
+	#print config.DATABASE, ' db created'
+	print 'Listing existing database \n', list_db()
 	#create_table('dk','phn')
 
 '''
