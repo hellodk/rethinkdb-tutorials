@@ -21,7 +21,10 @@ def close_connection():
 	pass
 
 def create_db(db_name):
-	r.db_create(db_name).run()
+	try:
+		r.db_create(db_name).run()
+	except RqlRuntimeError as rql:
+		print 'Failed to create the database ', rql.message()
 
 def create_table(db_name,table_name):
 	try:
