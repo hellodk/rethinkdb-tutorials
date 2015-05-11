@@ -1,0 +1,9 @@
+recli- A rethinkdb cli utility:
+
+How to install:
+---------------
+sudo apt-ge tinstall npm
+sudo npm install -g recli
+sudo apt-get install nodejs-legacy 
+sudo apt-get install node
+
