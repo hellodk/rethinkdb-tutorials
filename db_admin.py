@@ -28,7 +28,10 @@ def create_db(db_name):
 	except RqlRuntimeError as rql:
 		print 'Failed to create the database ', rql
 	except Exception as ex:
-		print 'Exception occurred' , ex
+		print 'Exception occurred ' , ex
+
+def list_db():
+	r.list_db()
 
 def create_table(db_name,table_name):
 	try:
@@ -55,6 +58,7 @@ if __name__ == '__main__':
 	print 'db connection established'
 	create_db(config.DATABASE)
 	print config.DATABASE, ' db created'
+	print 'Listing existing database , list_db()
 	#create_table('dk','phn')
 
 '''
