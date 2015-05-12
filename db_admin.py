@@ -3,7 +3,9 @@ import rethinkdb as r
 
 from rethinkdb.errors import RqlRuntimeError
 
-def get_db_connection(RETHINK_DB_INSTANCE_HOST='localhost',DRIVER_PORT=28015,DATABASE='test'):
+connection = None
+
+def get_db_connection(RETHINK_DB_INSTANCE_HOST='localhost',DRIVER_PORT=28015,DATABASE='sample'):
     try:
         #conn = r.connect(host='localhost', port=28015)
         global connection
@@ -19,9 +21,10 @@ def get_db_connection(RETHINK_DB_INSTANCE_HOST='localhost',DRIVER_PORT=28015,DAT
 
 def reconnect():
     try:
+        # if !(is_connection_open(connection)):
         connection.reconnect(noreply_wait=False)
     except Exception as ex:
-        print 'exceptin occurred ',ex
+        print 'exception occurred ',ex
     print 'Reconnected'
 
 def is_connection_open(connection):
@@ -56,9 +59,12 @@ def change_db(db_name):
         print 'Exception caused',ex
 
 def get_number_of_records(db_name,table_name):
+    connection = r.connect(config.RETHINK_DB_INSTANCE_HOST, config.DRIVER_PORT,config.DATABASE).repl()
+    reconnect()
     return r.table(table_name).count().run()
 
-def get_records(table_name,phone_number,connection):
+def get_records(table_name=config.TABLE,phone_number=config.PHONE_NUMBER,connection=connection):
+    #get_db_connection()
     return r.table(table_name).get(phone_number).run(connection)
 
 def create_table(db_name,table_name):

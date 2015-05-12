@@ -7,7 +7,6 @@ connection = db_admin.get_db_connection()
 print db_admin.is_connection_open(connection)
 print 'db_conection established'
 
-
 #Read values based on the existing phone numbers
 
 # cur = r.table("sample").run()
